@@ -1,0 +1,162 @@
+@import './params.less';
+
+// flex layout ******
+html, body, #app { height:100%; }
+.whole-page{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.container{
+ flex: 1 0 auto;
+}
+header{
+   /* 我们希望 header 采用固定的高度，只占用必须的空间 */
+   /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+   flex: 0 0 auto;
+}
+footer{
+   /* 和 header 一样，footer 也采用固定高度*/
+   /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+   flex: 0 0 auto;
+}
+// flex layout ******
+
+body {
+  font-size: 14px;
+  color: @black;
+  font-family: 'Helvetica','STHeiti';
+}
+
+/* attribute */
+.orange { color: @orange; }
+.bg-color { background: @background-color-base; }
+.strong { font-weight: bold; }
+.hoverblue {
+  &:hover {
+    color: @blue;
+    cursor: pointer;
+  }
+}
+.dispalyinline { display: inline-block; }
+.grayfont { color: @gray; }
+.redfont { color: @red; }
+.primaryfont { color: @primary-color }
+.infofont { color: @info-color }
+.successfont { color: @success-color }
+.warningfont { color: @warning-color }
+.errorfont { color: @error-color }
+
+.ellipsis {
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 80px;
+  vertical-align: middle;
+}
+a {
+  color: #337ab7;
+  text-decoration: none;
+  &:hover {
+    color: #337add;
+  }
+}
+.left-nav {
+  min-height: 500px;
+}
+
+
+/* layout */
+.ml10 { margin-left: 10px!important; }
+.mr10 { margin-right: 10px!important; }
+.ml20 { margin-left: 20px; }
+.mb10 { margin-bottom: 10px!important;; }
+.mt10 { margin-top: 10px; }
+.mb0 { margin-bottom: 0px; }
+.p10 { padding: 10px; }
+.fr { float: right; }
+.fl { float: left; }
+.tc { text-align: center!important;}
+.tr { text-align: right; }
+.tl { text-align: left; }
+.dib { display: inline-block; }
+.pf { position: fixed; }
+
+/* other */
+.mt-tooltip {
+  width: 300px;
+}
+.mt-alert {
+  padding: 10px 30px 10px 10px;
+  position: relative;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  i {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+.mt-page-header {
+  background: #f7f7f7;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  border-bottom: 1px solid #eaeefb;
+}
+.mt-table {
+  table-layout: fixed;
+  word-break: break-all;
+  width: 100%;
+  border: 1px solid #dfe6ec;
+  border-collapse: collapse;
+  td,th {
+    vertical-align: middle;
+    height: 40px;
+    padding: 5px 5px 5px 5px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: normal;
+  }
+  td {
+    color: #666;
+    border-top: 1px solid #dfe6ec;
+  }
+  th {
+    background: #eef1f6;
+    border-bottom: none;
+    color: #333;
+  }
+  tr.on {
+    background-color: #ebf7ff;
+  }
+}
+.mt-table-tc {
+  th,td {
+    text-align: center;
+  }
+}
+
+.page-wrap {
+  position: relative;
+  margin: 10px auto;
+  text-align: center;
+}
+.page {
+  text-align: center;
+  /* nesting for the need to test postcss */
+  code {
+    background-color: #f0f0f0;
+    padding: 3px 5px;
+    border-radius: 2px;
+  }
+}
+.right-dialog {
+  width: 50%!important;
+  margin-left: 25%;
+}
