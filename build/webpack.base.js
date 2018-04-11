@@ -60,10 +60,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      jQuery: "jquery",
-      $: "jquery"
-    }),
     new HtmlWebpackPlugin({
       title: config.title,
       template: path.resolve(__dirname, '../src/index.html'),

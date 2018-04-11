@@ -8,8 +8,6 @@ const express = require('express')
 const webpack = require('webpack')
 const webpackConfig = require('./webpack.dev')
 const config = require('./config')
-const proxyMiddleware = require('http-proxy-middleware')
-
 
 const app = express()
 
@@ -40,19 +38,10 @@ app.use(require('webpack-hot-middleware')(compiler, {
 const mfs = devMiddleWare.fileSystem
 const file = path.join(webpackConfig.output.path, 'index.html')
 
+
 devMiddleWare.waitUntilValid(function() {
   console.log(`> ( ^_^) VuePack is running at ${chalk.yellow(`http://localhost:${port}`)}\n`)
 })
-
-// 不使用后端代理解决跨域了
- // const proxyKeys = Object.keys(config.proxyTable)
- // proxyKeys.forEach(function (context) {
- //   var options = config.proxyTable[context]
- //   if (typeof options === 'string') {
- //     options = { target: options }
- //   }
- //   app.use(proxyMiddleware(options.filter || context, options))
- // })
 
 app.get('*', (req, res) => {
   devMiddleWare.waitUntilValid(() => {

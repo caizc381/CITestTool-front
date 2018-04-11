@@ -1,9 +1,11 @@
 'use strict'
 process.env.NODE_ENV = 'production'
 
-const exec = require('child_process').execSync
+// const exec = require('child_process').execSync
+var shell = require('shelljs')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const ProgressPlugin = require('webpack/lib/ProgressPlugin')
 const base = require('./webpack.base')
 const pkg = require('../package')
@@ -11,7 +13,8 @@ const _ = require('./webpack.utils')
 const config = require('./config')
 
 // remove dist folder in web app mode
-exec('rm -rf dist/')
+// exec('rm -rf dist/')
+shell.rm('-rf', 'dist/')
 // use source-map in web app mode
 base.devtool = 'source-map'
 
@@ -26,15 +29,16 @@ base.plugins.push(
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production')
   }),
-  new webpack.optimize.UglifyJsPlugin({
-    sourceMap: true,
-    compress: {
-      warnings: false
-    },
-    output: {
-      comments: false
-    }
-  }),
+  // new webpack.optimize.UglifyJsPlugin({
+  // new UglifyJSPlugin({
+  //   sourceMap: true,
+  //   compress: {
+  //     warnings: false
+  //   },
+  //   output: {
+  //     comments: false
+  //   }
+  // }),
   // extract vendor chunks
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',

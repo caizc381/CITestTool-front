@@ -2,11 +2,11 @@
 const pkg = require('../package')
 
 module.exports = {
-  port: 4000,
-  title: '渠道商体检预约管理系统',
+  port: 4002,
+  title: '持续集成平台',
   // when you use electron please set to relative path like ./
   // otherwise only set to absolute path when you're using history mode
-  publicPath: '/',
+  publicPath: '/ops/',
   // add these dependencies to a standalone vendor bundle
   vendor: [
     'vue',
@@ -20,7 +20,7 @@ module.exports = {
     babelrc: false,
     presets: [
       ['es2015', {modules: false}],
-      'stage-1'
+      'stage-1',
     ],
     // support jsx in render function
     plugins: [
@@ -32,25 +32,19 @@ module.exports = {
     // add prefix via postcss since it's faster
     require('autoprefixer')({
       // Vue does not support ie 8 and below
-      browsers: ['last 2 versions', 'ie > 8']
+      browsers: [          
+        'ie >= 8',
+        'ie_mob >= 10',
+        'ff >= 26',
+        'chrome >= 30',
+        'safari >= 6',
+        'opera >= 23',
+        'ios >= 5',
+        'android >= 2.3',
+        'bb >= 10'
+      ]
     }),
     require('postcss-nested')
   ],
   cssModules: false,
-  proxyTable: {
-      '/channel/action': {
-        target: 'http://qatest1.mytijian.cn',
-        changeOrigin: true,
-        logLevel:'debug',
-        pathRewrite: {
-          '^/channel/action': '/channel/action',
-        },
-        onProxyRes:function(proxyRes, req, res) {
-          if(proxyRes.headers['set-cookie'] && proxyRes.headers['set-cookie'][0]){
-            proxyRes.headers['set-cookie'][0] = proxyRes.headers['set-cookie'][0].replace('channel-site', 'channel')
-            res._headers['set-cookie'] = proxyRes.headers['set-cookie'];
-          }
-        }
-      },
-    },
 }
