@@ -1,5 +1,5 @@
 <template>
-  <div class="my-footer">Copyright &copy; 2017 版权所有：杭州每天健康管理有限公司</div>
+  <footer class="my-footer">Copyright &copy; 2017 版权所有：杭州每天健康管理有限公司</footer>
 </template>
 
 <script>
@@ -13,12 +13,12 @@ export default {
 </script>
 
 <style scoped lang="less">
+@import '../assets/style/common.less';
+
 .my-footer {
-  color: #666;
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
+  border-top: 1px solid @border-color-base;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
+  padding: 20px;
 }
 </style>

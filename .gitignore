@@ -1,22 +1,4 @@
-node_modules
-.idea
-\.tags*
-routes.js
-proxy
-
-# Logs
-logs
-*.log
-npm-debug.log*
-
-*.iml
+node_modules/
 *.idea
-
-# Optional npm cache directory
-.npm
-/node_modules/*
-# Optional REPL history
-.node_repl_history
-
-.DS_Store
-/dist
+*.iml
+dist/
